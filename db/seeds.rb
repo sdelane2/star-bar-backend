@@ -12,28 +12,50 @@ require 'faker'
 require 'pry'
 
 
+signs = {"Capricorn": "December 22 - January 19", "Aquarius": "January 20 - February 18", "Pisces": "February 19 - March 20", "Aries": "March 21 - April 19", "Leo": "July 23 - August 22", "Sagittarius": "November 23 - December 21", "Gemini": "May 21 - June 20", "Virgo": "August 23 - September 22", "Libra": "September 23 - October 23", "Scorpio": "October 24 - November 22", "Cancer": "June 21 - July 22", "Taurus": "April 20 - May 20"}
+
+Sign.destroy_all 
+Horoscope.destroy_all
+
+puts "Making signs"
+signs.each do |sign, range|
+    Sign.create(name: sign, date_range: range)
+end
+
+puts "making horoscopes"
+signs.each do |sign, range| 
+    all_horoscopes = RestClient.post("https://aztro.sameerkumar.website?sign=#{sign}&day=today", {})
+    horoscope_hash = JSON.parse(all_horoscopes)
+    Horoscope.create(horoscope: horoscope_hash["description"], sign_id: Sign.find_by(name: sign).id, mood: horoscope_hash["mood"], date: horoscope_hash["current_date"], lucky_number: horoscope_hash["lucky_number"], lucky_color: horoscope_hash["color"] , compatibility: horoscope_hash["compatibility"] )
+end
+
+puts "making users"
+
+User.create(name: Faker::Name.name, birthdate: "August 4")
+User.create(name: Faker::Name.name, birthdate: "March 4")
+User.create(name: Faker::Name.name, birthdate: "July 4")
 
 # Horoscope.create(horoscope: "test", mood: "test")
 
-def get_horoscopes
-    horoscope_array = []
-    all_horoscopes = RestClient.post("https://aztro.sameerkumar.website?sign=leo&day=today", {})
-    horoscope_hash = JSON.parse(all_horoscopes)
-    # binding.pry
-    # horoscope_array << horoscope_hash["items"]
+# def get_horoscopes
+#     horoscope_array = []
+#     all_horoscopes = RestClient.post("https://aztro.sameerkumar.website?sign=leo&day=today", {})
+#     horoscope_hash = JSON.parse(all_horoscopes)
+#     # binding.pry
+#     # horoscope_array << horoscope_hash["items"]
 
-    Sign.create(name: "Libra")
-    Horoscope.create!(horoscope: horoscope_hash["description"], sign_id: 1, mood: horoscope_hash["mood"])
+    
+#     Horoscope.create!(horoscope: horoscope_hash["description"], sign_id: 1, mood: horoscope_hash["mood"])
 
-#     horoscope_hash.each do |horoscope|
-#         Horoscope.create(
-#             horoscope: horoscope["horoscope"]
+# #     horoscope_hash.each do |horoscope|
+# #         Horoscope.create(
+# #             horoscope: horoscope["horoscope"]
             
-#         )
-#     end
-end
+# #         )
+# #     end
+# end
 
-get_horoscopes
+# get_horoscopes
 
 
     
