@@ -35,6 +35,12 @@ User.create(name: Faker::Name.name, birthdate: "August 4")
 User.create(name: Faker::Name.name, birthdate: "March 4")
 User.create(name: Faker::Name.name, birthdate: "July 4")
 
+puts "making favorites"
+
+10.times do 
+    FavoriteHoroscope.create(user_id: User.all.sample.id, horoscope_id: Horoscope.all.sample.id)
+end
+
 # Horoscope.create(horoscope: "test", mood: "test")
 
 # def get_horoscopes
