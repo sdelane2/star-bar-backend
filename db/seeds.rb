@@ -11,15 +11,27 @@ require 'json'
 require 'faker'
 require 'pry'
 
-
-signs = {"Capricorn": "December 22 - January 19", "Aquarius": "January 20 - February 18", "Pisces": "February 19 - March 20", "Aries": "March 21 - April 19", "Leo": "July 23 - August 22", "Sagittarius": "November 23 - December 21", "Gemini": "May 21 - June 20", "Virgo": "August 23 - September 22", "Libra": "September 23 - October 23", "Scorpio": "October 24 - November 22", "Cancer": "June 21 - July 22", "Taurus": "April 20 - May 20"}
+signs = {
+    "Capricorn": (Date.new(2020, 12, 22)...Date.new(2021, 1, 19)), 
+    "Aquarius": (Date.new(2020, 1, 20)...Date.new(2020, 2, 18)),
+     "Pisces": (Date.new(2020, 2, 19)...Date.new(2020, 3, 20)), 
+     "Aries": (Date.new(2020, 3, 21)...Date.new(2020, 4, 19)), 
+     "Leo": (Date.new(2020, 7, 23)...Date.new(2020, 8, 22)), 
+     "Sagittarius": (Date.new(2020, 11, 23)...Date.new(2020, 12, 21)), 
+     "Gemini": (Date.new(2020, 5, 21)...Date.new(2020, 6, 20)), 
+     "Virgo": (Date.new(2020, 8, 23)...Date.new(2020, 9, 22)), 
+     "Libra": (Date.new(2020, 9, 23)...Date.new(2020, 10, 23)), 
+     "Scorpio": (Date.new(2020, 10, 24)...Date.new(2020, 11, 22)), 
+     "Cancer": (Date.new(2020, 6, 21)...Date.new(2020, 7, 22)), 
+     "Taurus": (Date.new(2020, 4, 20)...Date.new(2020, 5, 20))
+    }
 
 Sign.destroy_all 
 Horoscope.destroy_all
 
 puts "Making signs"
 signs.each do |sign, range|
-    Sign.create(name: sign, date_range: range)
+    Sign.create(name: sign, duration: range)
 end
 
 puts "making horoscopes"

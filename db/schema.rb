@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_12_23_152248) do
 
   create_table "signs", force: :cascade do |t|
     t.string "name"
-    t.string "date_range"
+    t.daterange "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
