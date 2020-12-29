@@ -43,9 +43,9 @@ end
 
 puts "making users"
 
-User.create(name: Faker::Name.name, birthdate: "August 4")
-User.create(name: Faker::Name.name, birthdate: "March 4")
-User.create(name: Faker::Name.name, birthdate: "July 4")
+User.create(name: Faker::Name.name, birthdate: "August 4", username: "sean", password: "sean")
+User.create(name: Faker::Name.name, birthdate: "March 4", username: "moose", password: "sean")
+User.create(name: Faker::Name.name, birthdate: "July 4", username: "basil", password: "sean")
 
 puts "making favorites"
 
