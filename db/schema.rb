@@ -24,12 +24,11 @@ ActiveRecord::Schema.define(version: 2020_12_23_152248) do
 
   create_table "horoscopes", force: :cascade do |t|
     t.string "date"
-    t.string "horoscope"
+    t.string "description"
     t.integer "lucky_number"
     t.string "lucky_color"
     t.string "mood"
     t.string "compatibility"
-    t.integer "sign_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -38,14 +38,14 @@ puts "making horoscopes"
 signs.each do |sign, range| 
     all_horoscopes = RestClient.post("https://aztro.sameerkumar.website?sign=#{sign}&day=today", {})
     horoscope_hash = JSON.parse(all_horoscopes)
-    Horoscope.create(horoscope: horoscope_hash["description"], sign_id: Sign.find_by(name: sign).id, mood: horoscope_hash["mood"], date: horoscope_hash["current_date"], lucky_number: horoscope_hash["lucky_number"], lucky_color: horoscope_hash["color"] , compatibility: horoscope_hash["compatibility"] )
+    Horoscope.create!(description: horoscope_hash["description"], mood: horoscope_hash["mood"], date: horoscope_hash["current_date"], lucky_number: horoscope_hash["lucky_number"], lucky_color: horoscope_hash["color"] , compatibility: horoscope_hash["compatibility"] )
 end
 
 puts "making users"
 
-User.create(name: Faker::Name.name, birthdate: "August 4", username: "sean", password: "sean")
-User.create(name: Faker::Name.name, birthdate: "March 4", username: "moose", password: "sean")
-User.create(name: Faker::Name.name, birthdate: "July 4", username: "basil", password: "sean")
+User.create(name: Faker::Name.name, birthdate: Date.new(1988, 8, 4), username: "sean", password: "sean")
+User.create(name: Faker::Name.name, birthdate: Date.new(1993, 3, 4), username: "moose", password: "sean")
+User.create(name: Faker::Name.name, birthdate: Date.new(2010, 6, 14), username: "basil", password: "sean")
 
 puts "making favorites"
 

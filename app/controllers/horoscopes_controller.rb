@@ -16,7 +16,6 @@ class HoroscopesController < ApplicationController
   # POST /horoscopes
   def create
     @horoscope = Horoscope.new(horoscope_params)
-
     if @horoscope.save
       render json: @horoscope, status: :created, location: @horoscope
     else
@@ -46,6 +45,6 @@ class HoroscopesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def horoscope_params
-      params.require(:horoscope).permit(:date, :horoscope, :lucky_number, :integer, :lucky_color, :mood, :compatibility, :sign_id, :integer)
+      params.require(:horoscope).permit(:lucky_number, :lucky_color, :mood, :compatibility, :date, :description)
     end
 end
