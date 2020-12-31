@@ -46,6 +46,7 @@ class FavoriteHoroscopesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def favorite_horoscope_params
-      params.require(:favorite_horoscope).permit(:user_id, :integer, :horoscope_id, :integer)
+      # byebug
+      params.require(:favorite_horoscope).permit(:user_id, :horoscope_id,)
     end
 end
