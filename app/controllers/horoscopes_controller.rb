@@ -45,6 +45,6 @@ class HoroscopesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def horoscope_params
-      params.require(:horoscope).permit(:lucky_number, :lucky_color, :mood, :compatibility, :date, :description)
+      params.require(:horoscope).permit(:lucky_number, :lucky_color, :mood, :compatibility, :current_date, :description)
     end
 end

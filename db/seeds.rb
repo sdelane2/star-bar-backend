@@ -38,7 +38,7 @@ puts "making horoscopes"
 signs.each do |sign, range| 
     all_horoscopes = RestClient.post("https://aztro.sameerkumar.website?sign=#{sign}&day=today", {})
     horoscope_hash = JSON.parse(all_horoscopes)
-    Horoscope.create!(description: horoscope_hash["description"], mood: horoscope_hash["mood"], date: horoscope_hash["current_date"], lucky_number: horoscope_hash["lucky_number"], lucky_color: horoscope_hash["color"] , compatibility: horoscope_hash["compatibility"] )
+    Horoscope.create!(description: horoscope_hash["description"], mood: horoscope_hash["mood"], current_date: horoscope_hash["current_date"], lucky_number: horoscope_hash["lucky_number"], lucky_color: horoscope_hash["color"] , compatibility: horoscope_hash["compatibility"] )
 end
 
 puts "making users"

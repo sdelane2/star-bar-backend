@@ -1,4 +1,4 @@
 class HoroscopeSerializer < ActiveModel::Serializer
-    attributes :id
+    attributes :id, :current_date, :description, :lucky_number, :lucky_color, :mood, :compatibility
 end
 

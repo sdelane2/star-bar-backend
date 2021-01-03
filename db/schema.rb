@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_12_23_152248) do
   end
 
   create_table "horoscopes", force: :cascade do |t|
-    t.string "date"
+    t.string "current_date"
     t.string "description"
     t.integer "lucky_number"
     t.string "lucky_color"
