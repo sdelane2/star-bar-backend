@@ -1,7 +1,7 @@
 class CreateHoroscopes < ActiveRecord::Migration[6.0]
   def change
     create_table :horoscopes do |t|
-      t.string :date
+      t.string :current_date
       t.string :description
       t.integer :lucky_number
       t.string :lucky_color

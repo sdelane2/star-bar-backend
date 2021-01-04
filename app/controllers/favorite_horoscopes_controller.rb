@@ -16,7 +16,6 @@ class FavoriteHoroscopesController < ApplicationController
   # POST /favorite_horoscopes
   def create
     @favorite_horoscope = FavoriteHoroscope.new(favorite_horoscope_params)
-
     if @favorite_horoscope.save
       render json: @favorite_horoscope, status: :created, location: @favorite_horoscope
     else
