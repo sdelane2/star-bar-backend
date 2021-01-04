@@ -1,7 +1,4 @@
 class SignSerializer < ActiveModel::Serializer
-  attributes :id, :name, :duration
+  attributes :id, :name, :duration, :image
 
-  def duration
-    return 
-  end
 end

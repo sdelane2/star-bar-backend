@@ -3,6 +3,7 @@ class CreateSigns < ActiveRecord::Migration[6.0]
     create_table :signs do |t|
       t.string :name
       t.daterange :duration
+      t.string :image
 
       t.timestamps
     end

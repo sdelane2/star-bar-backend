@@ -12,26 +12,32 @@ require 'faker'
 require 'pry'
 
 signs = {
-    "Capricorn": (Date.new(2020, 12, 22)...Date.new(2021, 1, 19)), 
-    "Aquarius": (Date.new(2020, 1, 20)...Date.new(2020, 2, 18)),
-     "Pisces": (Date.new(2020, 2, 19)...Date.new(2020, 3, 20)), 
-     "Aries": (Date.new(2020, 3, 21)...Date.new(2020, 4, 19)), 
-     "Leo": (Date.new(2020, 7, 23)...Date.new(2020, 8, 22)), 
-     "Sagittarius": (Date.new(2020, 11, 23)...Date.new(2020, 12, 21)), 
-     "Gemini": (Date.new(2020, 5, 21)...Date.new(2020, 6, 20)), 
-     "Virgo": (Date.new(2020, 8, 23)...Date.new(2020, 9, 22)), 
-     "Libra": (Date.new(2020, 9, 23)...Date.new(2020, 10, 23)), 
-     "Scorpio": (Date.new(2020, 10, 24)...Date.new(2020, 11, 22)), 
-     "Cancer": (Date.new(2020, 6, 21)...Date.new(2020, 7, 22)), 
-     "Taurus": (Date.new(2020, 4, 20)...Date.new(2020, 5, 20))
+    "Capricorn": [(Date.new(2020, 12, 22)...Date.new(2021, 1, 19)), 'https://cdn.pixabay.com/photo/2018/03/16/16/42/signs-of-the-zodiac-3231771_1280.png'], 
+    "Aquarius": [(Date.new(2020, 1, 20)...Date.new(2020, 2, 18)), 'https://cdn.pixabay.com/photo/2018/03/16/16/37/signs-of-the-zodiac-3231753_1280.png'],
+     "Pisces": [(Date.new(2020, 2, 19)...Date.new(2020, 3, 20)), 'https://cdn.pixabay.com/photo/2018/03/16/16/38/signs-of-the-zodiac-3231760_1280.png'], 
+     "Aries": [(Date.new(2020, 3, 21)...Date.new(2020, 4, 19)), 'https://cdn.pixabay.com/photo/2018/03/16/16/41/signs-of-the-zodiac-3231766_1280.png'], 
+     "Leo": [(Date.new(2020, 7, 23)...Date.new(2020, 8, 22)), 'https://cdn.pixabay.com/photo/2018/03/16/16/40/signs-of-the-zodiac-3231765_1280.png'], 
+     "Sagittarius": [(Date.new(2020, 11, 23)...Date.new(2020, 12, 21)), 'https://cdn.pixabay.com/photo/2018/03/16/16/37/signs-of-the-zodiac-3231754_1280.png'], 
+     "Gemini": [(Date.new(2020, 5, 21)...Date.new(2020, 6, 20)), 'https://cdn.pixabay.com/photo/2018/03/16/16/44/signs-of-the-zodiac-3231780_1280.png'], 
+     "Virgo": [(Date.new(2020, 8, 23)...Date.new(2020, 9, 22)), 'https://cdn.pixabay.com/photo/2018/03/16/16/42/signs-of-the-zodiac-3231770_1280.png'], 
+     "Libra": [(Date.new(2020, 9, 23)...Date.new(2020, 10, 23)), 'https://cdn.pixabay.com/photo/2018/03/16/16/38/signs-of-the-zodiac-3231761_1280.png'], 
+     "Scorpio": [(Date.new(2020, 10, 24)...Date.new(2020, 11, 22)), 'https://cdn.pixabay.com/photo/2018/03/16/16/43/signs-of-the-zodiac-3231779_1280.png'], 
+     "Cancer": [(Date.new(2020, 6, 21)...Date.new(2020, 7, 22)), 'https://cdn.pixabay.com/photo/2018/03/16/16/42/signs-of-the-zodiac-3231776_1280.png'], 
+     "Taurus": [(Date.new(2020, 4, 20)...Date.new(2020, 5, 20)), 'https://cdn.pixabay.com/photo/2018/03/16/16/39/signs-of-the-zodiac-3231763_1280.png']
     }
 
+puts "Destroying signs"
 Sign.destroy_all 
+puts "Destroying Horoscopes"
 Horoscope.destroy_all
+# puts "Destroying users"
+# User.destroy_all 
+puts "Destroying Favorite Horoscopes"
+FavoriteHoroscope.destroy_all
 
 puts "Making signs"
 signs.each do |sign, range|
-    Sign.create(name: sign, duration: range)
+    Sign.create(name: sign, duration: range[0], image: range[1])
 end
 
 puts "making horoscopes"
