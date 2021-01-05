@@ -1,5 +1,5 @@
 class Sign < ApplicationRecord
-    
+    has_many :horoscopes
 
     def self.find_sign(date)
         self.all.find do |sign|

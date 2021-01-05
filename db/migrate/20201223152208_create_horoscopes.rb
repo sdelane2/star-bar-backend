@@ -7,6 +7,7 @@ class CreateHoroscopes < ActiveRecord::Migration[6.0]
       t.string :lucky_color
       t.string :mood
       t.string :compatibility
+      t.integer :sign_id
 
       t.timestamps
     end
