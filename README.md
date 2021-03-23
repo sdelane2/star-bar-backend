@@ -1,24 +1,8 @@
-# README
+## Star Bar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Star Bar is a horoscope application featuring daily horoscopes based on user’s date of birth, and features a horoscope favoriting tool. 
 
-Things you may want to cover:
 
-* Ruby version
+The backend of this project can be found here: https://github.com/sdelane2/star-bar-backend.
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
